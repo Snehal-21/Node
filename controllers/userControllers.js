@@ -93,7 +93,7 @@ export const addProduct = async (req, res) => {
         const { email, P_name, P_price } = req.body;
         if (!email) return res.send("Email is required!")
         const user = await Users.find({ email }).exec();
-        console.log(user[0])
+        console.log(user[0]);
         if (!user.length) return res.send("User not found!")
         const user_products={p_name:P_name,p_price:P_price};
         user[0].products.push(user_products);
@@ -110,7 +110,7 @@ export const addProduct = async (req, res) => {
 
 export const deleteProduct = async(req,res)=>{
     try{
-        const {email,}=req.body;
+        const {email}=req.body;
         if(!email) return res.send("Email not found!");
         // if(!P_name) return res.send("Product Name is required!");
         const user=await Users.find({email}).exec();
